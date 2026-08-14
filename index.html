@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Exclusiva +18 — Acesso VIP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        hsl(344, 73%, 3%);
+      --card:      hsl(344, 60%, 6%);
+      --border:    hsl(350, 80%, 20%);
+      --primary:   hsl(350, 100%, 45%);   /* #e60026 */
+      --accent:    hsl(335, 100%, 54%);   /* #ff1478 */
+      --muted-fg:  hsl(350, 30%, 70%);
+      --font-sans: 'Inter', sans-serif;
+      --font-disp: 'Bebas Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: #fff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--primary); color: #fff; }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── UTILITY ─────────────────────────────────────────────────────── */
+    .container { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    .container--narrow { max-width: 48rem; }
+    .container--mid    { max-width: 56rem; }
+
+    .font-disp { font-family: var(--font-disp); }
+    .upper { text-transform: uppercase; }
+
+    /* ─── KEYFRAMES ───────────────────────────────────────────────────── */
+    @keyframes ember-rise {
+      0%   { transform: translateY(0) translateX(0);   opacity: 0; }
+      10%  { opacity: .9; }
+      85%  { opacity: .5; }
+      100% { transform: translateY(-130vh) translateX(var(--dx)); opacity: 0; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px 2px rgba(204,0,34,.6), inset 0 0 10px rgba(255,107,0,.3); }
+      50%       { box-shadow: 0 0 30px 8px rgba(255,20,102,.9), inset 0 0 20px rgba(255,107,0,.6); }
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slide-left {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slide-right {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes hero-parallax {
+      to { transform: translateY(var(--parallax-y, 0px)); opacity: var(--parallax-o, 1); }
+    }
+
+    .anim-hidden { opacity: 0; }
+    .anim-visible { animation-fill-mode: both; animation-duration: .6s; animation-timing-function: ease-out; }
+    .anim-fade-up     { animation-name: fade-up; }
+    .anim-fade-in     { animation-name: fade-in; }
+    .anim-slide-left  { animation-name: slide-left; }
+    .anim-slide-right { animation-name: slide-right; }
+    .anim-scale-in    { animation-name: scale-in; }
+
+    /* ─── EMBERS ──────────────────────────────────────────────────────── */
+    #embers {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #embers::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, hsl(344,80%,12%) 0%, var(--bg) 70%);
+      opacity: .8;
+    }
+    .ember {
+      position: absolute;
+      bottom: -10%;
+      border-radius: 50%;
+      background: linear-gradient(to top, #ef4444, #fbbf24);
+      filter: blur(1px);
+      opacity: 0;
+      animation: ember-rise linear infinite;
+    }
+
+    /* ─── GLOWING DIVIDER ─────────────────────────────────────────────── */
+    .glow-divider {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4rem 0;
+      opacity: .6;
+    }
+    .glow-divider::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+    }
+    .glow-divider::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      filter: blur(3px);
+    }
+
+    /* ─── HERO ────────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .375rem 1rem;
+      border-radius: 999px;
+      background: hsla(350,80%,10%,.5);
+      border: 1px solid hsla(350,100%,45%,.4);
+      color: #fbbf24;
+      font-weight: 600;
+      font-size: .875rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      animation: fade-up .6s ease-out both;
+    }
+    .hero-tag svg { width: 1rem; height: 1rem; animation: pulse-glow 2s infinite; }
+
+    .hero-h1 {
+      font-family: var(--font-disp);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: .9;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      animation: scale-in .8s .2s ease-out both;
+    }
+    .hero-h1 .red  { color: #ef4444; }
+    .hero-h1 .white{ color: #fff; text-shadow: 0 0 15px rgba(255,255,255,.2); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.375rem);
+      color: hsla(0,100%,96%,.7);
+      max-width: 48rem;
+      font-weight: 300;
+      line-height: 1.6;
+      animation: fade-in .8s .4s both;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 56rem;
+      animation: fade-up .8s .5s both;
+    }
+    .hero-img img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 0 40px rgba(200,0,30,.25);
+      border: 1px solid hsla(350,80%,20%,.6);
+    }
+
+    .btn-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      padding: 1.25rem 3rem;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      border-radius: .75rem;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform .15s;
+      animation: pulse-glow 2s cubic-bezier(.4,0,.6,1) infinite, fade-up .8s .8s both;
+      width: 100%;
+      max-width: 28rem;
+    }
+    .btn-cta:active { transform: scale(.95); }
+    .btn-cta .shine {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.2);
+      transform: translateY(100%);
+      transition: transform .3s ease;
+    }
+    .btn-cta:hover .shine { transform: translateY(0); }
+    .btn-cta span { position: relative; z-index: 1; display: flex; align-items: center; gap: .5rem; }
+
+    /* ─── SECTION COMMON ──────────────────────────────────────────────── */
+    section { padding: 6rem 1.5rem; }
+
+    /* ─── FEATURES ────────────────────────────────────────────────────── */
+    #features { position: relative; z-index: 10; background: var(--bg); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .feat-card {
+      position: relative;
+      border-radius: 1rem;
+      border: 1px solid hsla(350,80%,20%,.5);
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+    .feat-card:hover { border-color: hsla(350,100%,45%,.5); }
+
+    .feat-card--img { aspect-ratio: 3/4; }
+    .feat-card--img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .feat-card--img:hover img { transform: scale(1.05); }
+    .feat-card--img .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 50%, transparent 100%);
+    }
+    .feat-card--img .label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem;
+    }
+    .feat-card--img .label h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,.8);
+    }
+
+    .feat-card--icon {
+      background: linear-gradient(to bottom, var(--card), var(--bg));
+      min-height: 14rem;
+    }
+    .feat-card--icon .inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+      height: 100%;
+      justify-content: center;
+    }
+    .icon-wrap {
+      padding: 1rem;
+      border-radius: 50%;
+      background: rgba(0,0,0,.5);
+      border: 1px solid var(--border);
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .feat-card--icon:hover .icon-wrap {
+      border-color: hsla(350,100%,45%,.4);
+      box-shadow: 0 0 20px rgba(204,0,34,.3);
+    }
+    .icon-wrap svg { width: 2rem; height: 2rem; }
+    .icon-red    { color: #ef4444; }
+    .icon-amber  { color: #f59e0b; }
+    .feat-card--icon h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #fff;
+      transition: color .25s;
+    }
+    .feat-card--icon:hover h3 { color: #fecaca; }
+
+    /* ─── WHY DIFFERENT ───────────────────────────────────────────────── */
+    #why-different {
+      position: relative;
+      background: #000;
+      overflow: hidden;
+    }
+    #why-different .radial-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, hsla(350,80%,10%,.2) 0%, transparent 70%);
+    }
+    #why-different .inner {
+      position: relative;
+      text-align: center;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    #why-different h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    #why-different p {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      color: hsla(0,100%,96%,.8);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ─── WHY CHOOSE + TESTIMONIALS ───────────────────────────────────── */
+    #social-proof { position: relative; z-index: 10; background: var(--bg); }
+
+    .two-col {
+      display: grid;
+      gap: 4rem;
+    }
+    @media (min-width: 1024px) {
+      .two-col { grid-template-columns: 1fr 1fr; align-items: center; }
+    }
+
+    .why-choose h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .check-list { display: flex; flex-direction: column; gap: 1rem; }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: .75rem;
+      background: rgba(0,0,0,.4);
+      border: 1px solid hsla(350,80%,20%,.3);
+      transition: border-color .25s;
+    }
+    .check-item:hover { border-color: hsla(350,100%,45%,.4); }
+    .check-icon {
+      flex-shrink: 0;
+      width: 2rem; height: 2rem;
+      border-radius: 50%;
+      background: hsla(350,100%,45%,.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-icon svg { width: 1.25rem; height: 1.25rem; color: var(--primary); }
+    .check-item span { font-size: 1.125rem; color: hsl(0,100%,98%); font-weight: 500; }
+
+    .testimonials { display: flex; flex-direction: column; gap: 1.5rem; }
+    .testimonial {
+      padding: 1.5rem;
+      background: linear-gradient(to bottom right, hsla(350,80%,10%,.4), #000);
+      border-radius: 1rem;
+      border: 1px solid hsla(350,80%,20%,.35);
+      backdrop-filter: blur(6px);
+    }
+    .stars { display: flex; gap: .25rem; margin-bottom: .75rem; }
+    .stars svg { width: 1.25rem; height: 1.25rem; fill: #f59e0b; color: #f59e0b; }
+    .testimonial p { color: hsla(0,100%,96%,.9); font-size: 1.0625rem; font-style: italic; }
+    .testimonial .author { margin-top: .75rem; color: hsla(350,80%,60%,.7); font-size: .875rem; font-weight: 600; }
+
+    /* ─── STATS ───────────────────────────────────────────────────────── */
+    #stats { background: #000; }
+    .stats-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem;
+      background: rgba(0,0,0,.4);
+      backdrop-filter: blur(8px);
+      border-radius: 1rem;
+      border: 1px solid hsla(350,80%,20%,.35);
+      box-shadow: 0 4px 30px rgba(204,0,34,.08);
+    }
+    .stat-num {
+      font-family: var(--font-disp);
+      font-size: clamp(3rem, 8vw, 5rem);
+      background: linear-gradient(to bottom right, #fcd34d, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(255,107,0,.5));
+    }
+    .stat-lbl {
+      font-size: .8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: hsla(350,100%,90%,.7);
+      margin-top: .5rem;
+      text-align: center;
+    }
+
+    /* ─── FAQ ─────────────────────────────────────────────────────────── */
+    #faq { background: #000; }
+    #faq h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 3rem;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; max-width: 48rem; margin: 0 auto; }
+    .faq-item {
+      border: 1px solid hsla(350,80%,20%,.35);
+      background: hsla(344,60%,6%,.5);
+      border-radius: .75rem;
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+    .faq-item.open { border-color: hsla(350,100%,45%,.5); }
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      text-align: left;
+      transition: color .2s;
+      font-family: var(--font-sans);
+    }
+    .faq-trigger:hover { color: var(--primary); }
+    .faq-trigger svg {
+      flex-shrink: 0;
+      width: 1.25rem; height: 1.25rem;
+      color: var(--muted-fg);
+      transition: transform .3s, color .2s;
+    }
+    .faq-item.open .faq-trigger svg { transform: rotate(180deg); color: var(--primary); }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+    }
+    .faq-item.open .faq-body { max-height: 20rem; }
+    .faq-body p {
+      padding: 0 1.5rem 1.5rem;
+      color: hsla(0,100%,90%,.7);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ─── CHECKOUT / FINAL CTA ────────────────────────────────────────── */
+    #checkout {
+      position: relative;
+      background: linear-gradient(to bottom, #000, var(--bg));
+      overflow: hidden;
+    }
+    .checkout-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50rem; height: 50rem;
+      background: hsla(350,100%,45%,.15);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .checkout-inner {
+      position: relative;
+      text-align: center;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .checkout-inner h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      margin-bottom: 1.25rem;
+    }
+    .checkout-inner > p {
+      font-size: clamp(1.0625rem, 2vw, 1.375rem);
+      color: hsla(0,100%,96%,.8);
+      max-width: 36rem;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 580px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+
+    .plan {
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .plan--basic {
+      border: 1px solid hsla(350,80%,20%,.5);
+      background: hsla(344,80%,4%,.8);
+      backdrop-filter: blur(8px);
+    }
+    .plan--full {
+      position: relative;
+      border: 2px solid var(--primary);
+      background: linear-gradient(to bottom, hsl(344,80%,8%), hsl(344,80%,4%));
+      box-shadow: 0 0 40px rgba(204,0,34,.35);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -1rem; left: 50%;
+      transform: translateX(-50%);
+      padding: .25rem 1rem;
+      background: var(--primary);
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .plan-name {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: hsla(350,80%,80%,.75);
+      margin-top: .5rem;
+    }
+    .plan-price {
+      display: flex;
+      align-items: flex-end;
+      gap: .15rem;
+      line-height: 1;
+    }
+    .plan-price .cur { font-size: 1.125rem; font-weight: 600; margin-bottom: .2rem; }
+    .plan-price .val { font-family: var(--font-disp); font-size: 4rem; font-weight: 900; }
+    .plan-price .dec { font-size: 1.5rem; font-weight: 900; margin-bottom: .25rem; }
+    .plan--basic .plan-price { color: #fff; }
+    .plan--full  .plan-price { color: #fca5a5; }
+    .plan-desc { font-size: .875rem; color: hsla(0,100%,90%,.7); line-height: 1.6; }
+    .plan-desc strong { color: #fff; }
+
+    .btn-plan {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+      border-radius: .75rem;
+      font-weight: 700;
+      font-size: .9375rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      cursor: pointer;
+      border: none;
+      transition: background .2s, transform .15s;
+      margin-top: .5rem;
+    }
+    .btn-plan:active { transform: scale(.95); }
+    .btn-plan--basic {
+      background: hsla(350,80%,15%,.4);
+      border: 1px solid hsla(350,80%,40%,.45);
+      color: #fff;
+    }
+    .btn-plan--basic:hover { background: hsla(350,80%,25%,.4); }
+    .btn-plan--full {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: #fff;
+      animation: pulse-glow 2s cubic-bezier(.4,0,.6,1) infinite;
+    }
+
+    .instant-txt {
+      margin-top: 1.5rem;
+      font-size: .8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: hsla(350,80%,60%,.6);
+    }
+
+    /* ─── TRUST BADGES ────────────────────────────────────────────────── */
+    .trust {
+      margin-top: 2.5rem;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      border: 1px solid hsla(152,80%,25%,.4);
+      background: hsla(152,80%,5%,.3);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(16,185,129,.06);
+    }
+    @media (min-width: 640px) { .trust { flex-direction: row; } }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .trust-icon {
+      width: 4rem; height: 4rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon--green {
+      background: hsla(152,80%,15%,.6);
+      border: 2px solid hsla(152,80%,40%,.6);
+      box-shadow: 0 0 20px rgba(16,185,129,.3);
+    }
+    .trust-icon--amber {
+      background: hsla(38,80%,15%,.6);
+      border: 2px solid hsla(38,80%,40%,.6);
+      box-shadow: 0 0 20px rgba(245,158,11,.3);
+    }
+    .trust-icon svg { width: 2rem; height: 2rem; }
+    .trust-icon--green svg { color: #34d399; }
+    .trust-icon--amber svg { color: #fbbf24; }
+    .trust-text { text-align: left; }
+    .trust-text strong {
+      display: block;
+      font-size: .9375rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .trust-text span { font-size: .75rem; opacity: .6; margin-top: .15rem; display: block; }
+    .trust-item--green .trust-text strong { color: #6ee7b7; }
+    .trust-item--amber .trust-text strong { color: #fcd34d; }
+    .trust-divider {
+      width: 1px; height: 3rem;
+      background: hsla(152,80%,25%,.4);
+      display: none;
+    }
+    @media (min-width: 640px) { .trust-divider { display: block; } }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────────── */
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: var(--bg);
+      border-top: 1px solid hsla(350,80%,20%,.3);
+    }
+    footer p {
+      font-size: .75rem;
+      color: hsla(350,30%,70%,.5);
+      margin-bottom: .5rem;
+    }
+    footer p:last-child { margin-bottom: 0; }
+
+    /* ─── RESPONSIVE TWEAKS ───────────────────────────────────────────── */
+    @media (max-width: 479px) {
+      .btn-cta { font-size: 1rem; padding: 1rem 2rem; }
+    }
+  <style>
+    .hero-img { width: min(100%, 25rem); }
+    .hero-video-shell { position: relative; overflow: hidden; width: 100%; border: 1px solid hsla(350, 80%, 20%, .6); border-radius: 1rem; background: #000; box-shadow: 0 0 40px rgba(200, 0, 30, .25); }
+    .hero-video { display: block; width: 100%; height: auto; aspect-ratio: 592 / 1080; object-fit: cover; }
+    .feat-card--img { background: linear-gradient(145deg, hsl(344, 60%, 10%), hsl(344, 60%, 4%)); }
+    </style>
+</style>
+</head>
+<body>
+
+  <!-- ───────────────────────── 1. HERO ───────────────────────────── -->
+  <section id="hero">
+    <div id="embers"></div>
+
+    <div class="hero-inner">
+      <!-- Tag -->
+      <div class="hero-tag">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 0.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg>
+        Acesso VIP Liberado
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-h1">
+        <span class="red">😈 Mais de 20 modelos bem safadinhas</span><br>
+        <span class="white">em uma coleção com mais de 500 vídeos exclusivos.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-sub">
+        Conteúdo exclusivo, acesso imediato e uma biblioteca recheada de vídeos para quem gosta de emoção.
+      </p>
+
+      <!-- Mockup GIF -->
+      <div class="hero-img">
+        <div class="hero-video-shell">
+      <video class="hero-video" autoplay loop playsinline controls preload="auto" poster="media/exclusive-library-hero-poster.jpg" aria-label="Prévia do conteúdo exclusivo">
+        <source src="media/exclusive-library-hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+      </div>
+
+      <!-- CTA -->
+      <button class="btn-cta" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">
+        <div class="shine"></div>
+        <span>
+          Quero Desbloquear Agora
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── 2. FEATURES ─────────────────────────── -->
+  <section id="features">
+    <div class="container">
+      <div class="glow-divider"></div>
+      <div class="features-grid">
+
+        <!-- Card with image: 500 videos -->
+        <div class="feat-card feat-card--img anim-hidden" data-anim="fade-up" data-delay="0">
+          <img src="media/catalog-original-1.png" alt="Mais de 500 vídeos exclusivos" loading="lazy" />
+          <div class="overlay"></div>
+          <div class="label"><h3>Mais de 500 vídeos exclusivos</h3></div>
+        </div>
+
+        <!-- Card with image: 20 modelos -->
+        <div class="feat-card feat-card--img anim-hidden" data-anim="fade-up" data-delay="100">
+          <img src="media/catalog-original-2.png" alt="20 modelos +18 diferentes" loading="lazy" />
+          <div class="overlay"></div>
+          <div class="label"><h3>20 modelos +18 diferentes</h3></div>
+        </div>
+
+        <!-- Card with image: categorias -->
+        <div class="feat-card feat-card--img anim-hidden" data-anim="fade-up" data-delay="200">
+          <img src="media/catalog-original-3.png" alt="Conteúdo organizado por categorias" loading="lazy" />
+          <div class="overlay"></div>
+          <div class="label"><h3>Conteúdo organizado por categorias</h3></div>
+        </div>
+
+        <!-- Icon card: Acesso imediato -->
+        <div class="feat-card feat-card--icon anim-hidden" data-anim="fade-up" data-delay="300">
+          <div class="inner">
+            <div class="icon-wrap">
+              <svg class="icon-amber" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Acesso imediato após a confirmação</h3>
+          </div>
+        </div>
+
+        <!-- Icon card: Dispositivos -->
+        <div class="feat-card feat-card--icon anim-hidden" data-anim="fade-up" data-delay="400">
+          <div class="inner">
+            <div class="icon-wrap">
+              <svg class="icon-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
+            </div>
+            <h3>Compatível com celular, tablet e computador</h3>
+          </div>
+        </div>
+
+        <!-- Icon card: Atualizações -->
+        <div class="feat-card feat-card--icon anim-hidden" data-anim="fade-up" data-delay="500">
+          <div class="inner">
+            <div class="icon-wrap">
+              <svg class="icon-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Atualizações frequentes</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────── 3. WHY DIFFERENT ────────────────────────── -->
+  <section id="why-different">
+    <div class="radial-bg"></div>
+    <div class="inner container anim-hidden" data-anim="scale-in">
+      <h2><span style="color:var(--primary)">😈</span> O que torna essa biblioteca diferente?</h2>
+      <p>Esqueça perder tempo procurando em vários lugares. Aqui você encontra uma coleção organizada, com centenas de vídeos exclusivos reunidos em uma única plataforma.</p>
+    </div>
+  </section>
+
+  <!-- ────────────── 4. STATS COUNTERS ────────────────────────────── -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card anim-hidden" data-anim="fade-up" data-delay="0">
+          <div class="stat-num" data-counter="500" data-suffix="+">0+</div>
+          <div class="stat-lbl">Vídeos exclusivos</div>
+        </div>
+        <div class="stat-card anim-hidden" data-anim="fade-up" data-delay="100">
+          <div class="stat-num" data-counter="20" data-suffix="+">0+</div>
+          <div class="stat-lbl">Modelos +18</div>
+        </div>
+        <div class="stat-card anim-hidden" data-anim="fade-up" data-delay="200">
+          <div class="stat-num" data-counter="100" data-suffix="%">0%</div>
+          <div class="stat-lbl">Acesso imediato</div>
+        </div>
+        <div class="stat-card anim-hidden" data-anim="fade-up" data-delay="300">
+          <div class="stat-num" data-counter="30" data-suffix="d">0d</div>
+          <div class="stat-lbl">Dias de garantia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── 5. WHY CHOOSE + TESTIMONIALS ────────────────────── -->
+  <section id="social-proof">
+    <div class="container">
+      <div class="two-col">
+
+        <!-- Why choose -->
+        <div class="why-choose anim-hidden" data-anim="slide-left">
+          <h2>Por que milhares de pessoas escolhem nossa plataforma?</h2>
+          <div class="check-list">
+            <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Biblioteca completa</span></div>
+            <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Acesso instantâneo</span></div>
+            <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Navegação simples</span></div>
+            <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Conteúdo premium</span></div>
+            <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Plataforma rápida e segura</span></div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials">
+          <div class="testimonial anim-hidden" data-anim="slide-right" data-delay="0">
+            <div class="stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p>"Muito mais organizado do que eu imaginava. Valeu cada centavo."</p>
+            <p class="author">— Rafael M.</p>
+          </div>
+          <div class="testimonial anim-hidden" data-anim="slide-right" data-delay="150">
+            <div class="stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p>"O acesso foi liberado na hora e a plataforma é muito fácil de usar."</p>
+            <p class="author">— Carlos T.</p>
+          </div>
+          <div class="testimonial anim-hidden" data-anim="slide-right" data-delay="300">
+            <div class="stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p>"Quantidade de conteúdo impressionante."</p>
+            <p class="author">— Diego S.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────── 6. FAQ ────────────────────────────────── -->
+  <section id="faq">
+    <div class="glow-divider" style="margin-bottom:4rem;"></div>
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-trigger">
+            O acesso é imediato?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Sim. Após a confirmação do pagamento, seu acesso é liberado instantaneamente.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Posso assistir pelo celular?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Sim. Nossa plataforma é totalmente otimizada e funciona em qualquer dispositivo: celular, tablet ou computador.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger">
+            O acesso expira?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Depende do plano adquirido. Verifique as condições no momento da compra.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger">
+            O conteúdo é atualizado?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Novos conteúdos podem ser adicionados periodicamente, mantendo a biblioteca sempre quente.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────── 7. FINAL CTA / CHECKOUT ─────────────────────── -->
+  <section id="checkout">
+    <div class="checkout-glow"></div>
+    <div class="checkout-inner">
+      <div class="anim-hidden" data-anim="scale-in">
+        <h2>Libere seu acesso agora</h2>
+        <p>Tenha acesso imediato à biblioteca completa com mais de 500 vídeos exclusivos de 20 modelos +18.</p>
+
+        <div class="pricing-grid">
+
+          <!-- Plano Básico -->
+          <div class="plan plan--basic">
+            <p class="plan-name">Plano Básico</p>
+            <div class="plan-price">
+              <span class="cur" style="color:rgba(255,255,255,.6)">R$</span>
+              <span class="val" style="color:#fff">10</span>
+            </div>
+            <p class="plan-desc">10 vídeos exclusivos de <strong>1 modelo</strong>.<br>Sem benefícios adicionais.</p>
+            <a href="https://link.syncpayments.com.br/G3ho3q" target="_blank" rel="noopener noreferrer" class="btn-plan btn-plan--basic">
+              QUERO ESSE
+            </a>
+          </div>
+
+          <!-- Acesso Completo -->
+          <div class="plan plan--full" style="position:relative;">
+            <div class="plan-badge">✦ Mais Popular</div>
+            <p class="plan-name">Acesso Completo</p>
+            <div class="plan-price">
+              <span class="cur">R$</span>
+              <span class="val">29</span>
+              <span class="dec">,90</span>
+            </div>
+            <p class="plan-desc"><strong>500+ vídeos</strong> · <strong>20 modelos</strong><br>Todas as categorias · Acesso imediato<br>Atualizações frequentes incluídas</p>
+            <a href="https://link.syncpayments.com.br/OrBP8C" target="_blank" rel="noopener noreferrer" class="btn-plan btn-plan--full">
+              👉 QUERO DESBLOQUEAR AGORA
+            </a>
+          </div>
+
+        </div>
+
+        <p class="instant-txt">Acesso instantâneo após a confirmação</p>
+      </div>
+
+      <!-- Trust badges -->
+      <div style="display:flex;justify-content:center;margin-top:2.5rem;">
+        <div class="trust anim-hidden" data-anim="fade-up">
+          <div class="trust-item trust-item--green">
+            <div class="trust-icon trust-icon--green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong>Compra 100% Segura</strong>
+              <span>Pagamento criptografado e protegido</span>
+            </div>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item trust-item--amber">
+            <div class="trust-icon trust-icon--amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong>30 Dias de Garantia</strong>
+              <span>Reembolso total sem perguntas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────────────────────── FOOTER ─────────────────────────────── -->
+  <footer>
+    <p>Aviso: O conteúdo desta página é destinado apenas a maiores de 18 anos.</p>
+    <p id="footer-year">© 2025 Plataforma Exclusiva. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ─────────────────────────── JS ───────────────────────────────── -->
+  <script>
+    'use strict';
+
+    /* ── Footer year ── */
+    document.getElementById('footer-year').textContent =
+      `© ${new Date().getFullYear()} Plataforma Exclusiva. Todos os direitos reservados.`;
+
+    /* ── Embers ── */
+    (function spawnEmbers() {
+      const container = document.getElementById('embers');
+      const NUM = 40;
+      for (let i = 0; i < NUM; i++) {
+        const e = document.createElement('div');
+        e.className = 'ember';
+        const size = Math.random() * 6 + 2;
+        const dur  = Math.random() * 4 + 3;
+        const delay = Math.random() * 5;
+        const dx   = (Math.random() * 80 - 40) + 'px';
+        e.style.cssText = `
+          left: ${Math.random() * 100}%;
+          width: ${size}px;
+          height: ${size}px;
+          animation-duration: ${dur}s;
+          animation-delay: ${-delay * Math.random() * dur}s;
+          --dx: ${dx};
+        `;
+        container.appendChild(e);
+      }
+    })();
+
+    /* ── Scroll-reveal via IntersectionObserver ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const anim  = el.dataset.anim  || 'fade-up';
+        const delay = el.dataset.delay || '0';
+        el.classList.remove('anim-hidden');
+        el.classList.add('anim-visible', `anim-${anim}`);
+        el.style.animationDelay = `${delay}ms`;
+        observer.unobserve(el);
+      });
+    }, { rootMargin: '-50px', threshold: 0.05 });
+
+    document.querySelectorAll('.anim-hidden').forEach(el => observer.observe(el));
+
+    /* ── Animated counters ── */
+    function animateCounter(el) {
+      const target  = parseInt(el.dataset.counter, 10);
+      const suffix  = el.dataset.suffix || '';
+      const dur     = 2000;
+      const start   = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / dur, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '-50px' });
+
+    document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  
+      document.querySelectorAll('video').forEach((video) => {
+        video.volume = 1;
+        video.play().catch(() => { video.controls = true; });
+      });
+    </script>
+    </body>
+</html>

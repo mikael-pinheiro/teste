@@ -1,0 +1,16 @@
+BIBLIOTECA EXCLUSIVA VIP — ARQUIVOS PARA HOSPEDAGEM
+
+1. Extraia este ZIP.
+2. Envie TODOS os arquivos e a pasta media para a pasta pública da hospedagem.
+   Na Hostinger, normalmente ela se chama public_html.
+3. O arquivo index.html precisa ficar diretamente dentro da pasta pública.
+
+Estrutura esperada:
+public_html/
+  index.html
+  styles.css
+  script.js
+  media/
+
+Os links dos botões já apontam para os checkouts atuais.
+A faixa promocional atualiza a data automaticamente pelo horário de São Paulo.
